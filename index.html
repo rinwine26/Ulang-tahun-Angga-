@@ -536,6 +536,7 @@
             z-index: 2;
             transition: all 0.3s ease;
             box-shadow: 0 8px 30px rgba(255,71,126,0.3);
+            font-family: 'Inter', sans-serif;
         }
         .closing-cta:hover {
             transform: translateY(-2px);
@@ -570,7 +571,7 @@
             font-family: 'Inter', sans-serif;
             white-space: nowrap;
         }
-        .nav-btn:active { transform: scale(0.95); }
+        .nav-btn:active:not(:disabled) { transform: scale(0.95); }
 
         .nav-btn.prev {
             background: #F3F4F6;
@@ -580,7 +581,6 @@
         .nav-btn.prev:disabled {
             opacity: 0.35;
             cursor: not-allowed;
-            transform: none;
         }
 
         .nav-btn.next {
@@ -588,18 +588,12 @@
             color: white;
             box-shadow: 0 4px 15px rgba(255,71,126,0.3);
         }
-        .nav-btn.next:hover:not(:disabled) {
+        .nav-btn.next:hover {
             box-shadow: 0 6px 25px rgba(255,71,126,0.4);
             transform: translateY(-1px);
         }
-        .nav-btn.next:active:not(:disabled) {
+        .nav-btn.next:active {
             transform: translateY(0) scale(0.97);
-        }
-        .nav-btn.next:disabled {
-            opacity: 0.35;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
         }
 
         .dots {
@@ -700,7 +694,7 @@
                     </div>
                     <div class="cover-age-badge">🥂 23 th</div>
                     <div class="cover-divider"></div>
-                    <div class="cover-hint">Klik tombol Lanjut untuk membaca pesan</div>
+                    <div class="cover-hint">Klik tombol Next untuk membaca pesan</div>
                 </div>
 
                 <!-- SLIDE 2 -->
@@ -799,7 +793,7 @@
                         Jangan lupa bahagia ya 👍<br>
                         Semoga tahun ini jadi tahun terbaikmu.
                     </p>
-                    <button class="closing-cta" onclick="triggerConfetti(); showToast();">
+                    <button class="closing-cta" id="celebrateBtn">
                         🎉 Rayakan Ulang Tahun
                     </button>
                 </div>
@@ -809,11 +803,11 @@
             <!-- Navigation -->
             <div class="nav-bar">
                 <button class="nav-btn prev" id="prevBtn" disabled>
-                    ← Kembali
+                    ← Prev
                 </button>
                 <div class="dots" id="dots"></div>
                 <button class="nav-btn next" id="nextBtn">
-                    Lanjut →
+                    Next →
                 </button>
             </div>
         </div>
@@ -821,33 +815,57 @@
 
     <script>
         // ==================== SLIDE SYSTEM ====================
-        let currentSlide = 0;
-        const totalSlides = 6;
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const dotsContainer = document.getElementById('dots');
+        var currentSlide = 0;
+        var totalSlides = 6;
+        var slides = document.querySelectorAll('.slide');
+        var prevBtn = document.getElementById('prevBtn');
+        var nextBtn = document.getElementById('nextBtn');
+        var dotsContainer = document.getElementById('dots');
 
         // Buat dot indicator
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('button');
+        for (var i = 0; i < totalSlides; i++) {
+            var dot = document.createElement('button');
             dot.className = 'dot' + (i === 0 ? ' active' : '');
             dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-            dot.addEventListener('click', function() { goToSlide(i); });
+            dot.dataset.index = i;
+            dot.addEventListener('click', function() {
+                goToSlide(parseInt(this.dataset.index));
+            });
             dotsContainer.appendChild(dot);
         }
-        const dots = document.querySelectorAll('.dot');
+        var dots = document.querySelectorAll('.dot');
 
-        // Tombol prev/next pakai event listener (bukan inline onclick)
-        prevBtn.addEventListener('click', function() { changeSlide(-1); });
-        nextBtn.addEventListener('click', function() { changeSlide(1); });
+        // Tombol Prev
+        prevBtn.addEventListener('click', function() {
+            if (currentSlide > 0) {
+                goToSlide(currentSlide - 1);
+            }
+        });
+
+        // Tombol Next — di slide terakhir tetap bisa diklik untuk confetti
+        nextBtn.addEventListener('click', function() {
+            if (currentSlide < totalSlides - 1) {
+                goToSlide(currentSlide + 1);
+            } else {
+                // Sudah di slide terakhir → trigger confetti + toast
+                triggerConfetti();
+                showToast();
+            }
+        });
+
+        // Tombol Rayakan di slide closing
+        var celebrateBtn = document.getElementById('celebrateBtn');
+        celebrateBtn.addEventListener('click', function() {
+            triggerConfetti();
+            showToast();
+        });
 
         function goToSlide(index) {
             if (index === currentSlide || index < 0 || index >= totalSlides) return;
 
-            const direction = index > currentSlide ? 1 : -1;
-            const oldSlide = slides[currentSlide];
-            const newSlide = slides[index];
+            var direction = index > currentSlide ? 1 : -1;
+            var oldSlide = slides[currentSlide];
+            var newSlide = slides[index];
 
             // Animasi keluar slide lama
             oldSlide.classList.remove('active');
@@ -875,24 +893,21 @@
             currentSlide = index;
             updateNav();
 
-            // Confetti otomatis di slide terakhir
+            // Confetti otomatis saat masuk slide terakhir
             if (index === totalSlides - 1) {
                 setTimeout(function() { triggerConfetti(); }, 400);
             }
         }
 
-        function changeSlide(direction) {
-            goToSlide(currentSlide + direction);
-        }
-
         function updateNav() {
-            prevBtn.disabled = currentSlide === 0;
-            nextBtn.disabled = currentSlide === totalSlides - 1;
-            if (currentSlide === totalSlides - 1) {
-                nextBtn.innerHTML = '🥳';
-            } else {
-                nextBtn.innerHTML = 'Lanjut →';
-            }
+            // Tombol Prev: disabled hanya di slide pertama
+            prevBtn.disabled = (currentSlide === 0);
+
+            // Tombol Next: SELALU aktif — tulisan tetap "Next →"
+            // Di slide terakhir, klik Next = trigger confetti (bukan pindah slide)
+            nextBtn.disabled = false;
+
+            // Update dots
             dots.forEach(function(dot, i) {
                 dot.classList.toggle('active', i === currentSlide);
             });
