@@ -106,7 +106,7 @@
         .slides-container {
             position: relative;
             overflow: hidden;
-            min-height: 720px;
+            min-height: 580px;
         }
 
         .slide {
@@ -132,7 +132,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 0 28px 28px;
+            padding: 0 28px 24px;
             margin-top: auto;
         }
 
@@ -141,10 +141,10 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 28px;
+            padding: 11px 24px;
             border-radius: 50px;
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
             border: none;
             transition: all 0.3s ease;
@@ -176,10 +176,10 @@
             transform: translateY(0) scale(0.97);
         }
 
-        /* Tombol Next khusus di cover — lebih besar */
         .btn-next-cover {
-            padding: 14px 36px;
-            font-size: 15px;
+            padding: 13px 34px;
+            font-size: 14px;
+            font-weight: 700;
             box-shadow: 0 8px 28px rgba(255,71,126,0.4);
             position: relative;
             z-index: 2;
@@ -236,28 +236,20 @@
 
         .cover-decoration-top {
             position: absolute;
-            top: -30px;
-            left: -30px;
-            width: 120px;
-            height: 120px;
+            top: -30px; left: -30px;
+            width: 120px; height: 120px;
             background: radial-gradient(circle, rgba(255,71,126,0.15) 0%, transparent 70%);
             border-radius: 50%;
         }
         .cover-decoration-bottom {
             position: absolute;
-            bottom: -40px;
-            right: -40px;
-            width: 160px;
-            height: 160px;
+            bottom: -40px; right: -40px;
+            width: 160px; height: 160px;
             background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%);
             border-radius: 50%;
         }
 
-        .cover-sparkles {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
+        .cover-sparkles { position: absolute; inset: 0; pointer-events: none; }
         .sparkle {
             position: absolute;
             font-size: 16px;
@@ -279,8 +271,7 @@
             margin-bottom: 8px;
             animation: crownFloat 3s ease-in-out infinite;
             filter: drop-shadow(0 4px 8px rgba(255,215,0,0.3));
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
         }
         @keyframes crownFloat {
             0%, 100% { transform: translateY(0) rotate(-3deg); }
@@ -288,178 +279,117 @@
         }
 
         .cover-photo-wrapper {
-            width: 140px;
-            height: 140px;
+            width: 140px; height: 140px;
             border-radius: 50%;
             border: 4px solid var(--white);
             box-shadow: 0 8px 30px rgba(255,71,126,0.3), 0 0 0 8px rgba(255,71,126,0.08);
             overflow: hidden;
             margin: 0 auto 20px;
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
         }
-        .cover-photo-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .cover-photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
         .cover-happy {
             font-family: 'Playfair Display', serif;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 6px;
-            text-transform: uppercase;
+            font-size: 14px; font-weight: 700;
+            letter-spacing: 6px; text-transform: uppercase;
             color: var(--pink-500);
             margin-bottom: 4px;
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
         }
 
         .cover-name {
             font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 900;
+            font-size: 42px; font-weight: 900;
             background: linear-gradient(135deg, var(--pink-500) 0%, var(--purple-500) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 2;
+            line-height: 1.1; margin-bottom: 16px;
+            position: relative; z-index: 2;
         }
 
         .cover-date-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--white);
-            border-radius: 50px;
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--white); border-radius: 50px;
             padding: 10px 22px;
             box-shadow: 0 4px 20px rgba(255,71,126,0.15);
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
         }
         .cover-calendar {
-            width: 38px;
-            height: 38px;
+            width: 38px; height: 38px;
             background: linear-gradient(135deg, var(--pink-500), var(--rose-500));
             border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            line-height: 1;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            color: white; line-height: 1;
         }
-        .cover-calendar .cal-month {
-            font-size: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .cover-calendar .cal-day {
-            font-size: 18px;
-            font-weight: 800;
-        }
+        .cover-calendar .cal-month { font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .cover-calendar .cal-day { font-size: 18px; font-weight: 800; }
         .cover-date-text { text-align: left; }
-        .cover-date-text .date-year {
-            font-size: 11px;
-            color: var(--gray-400);
-            font-weight: 500;
-        }
-        .cover-date-text .date-label {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--dark);
-        }
+        .cover-date-text .date-year { font-size: 11px; color: var(--gray-400); font-weight: 500; }
+        .cover-date-text .date-label { font-size: 13px; font-weight: 700; color: var(--dark); }
 
         .cover-age-badge {
             margin-top: 16px;
             background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: var(--dark);
-            font-size: 12px;
-            font-weight: 800;
-            padding: 6px 20px;
-            border-radius: 50px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            color: var(--dark); font-size: 12px; font-weight: 800;
+            padding: 6px 20px; border-radius: 50px;
+            letter-spacing: 2px; text-transform: uppercase;
             box-shadow: 0 4px 15px rgba(255,215,0,0.4);
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
         }
 
         .cover-divider {
-            width: 60px;
-            height: 3px;
+            width: 60px; height: 3px;
             background: linear-gradient(90deg, var(--pink-300), var(--purple-300));
-            border-radius: 10px;
-            margin: 20px auto 0;
-            position: relative;
-            z-index: 2;
+            border-radius: 10px; margin: 20px auto 0;
+            position: relative; z-index: 2;
         }
 
         .cover-nav {
             padding: 24px 28px 28px;
-            display: flex;
-            justify-content: center;
+            display: flex; justify-content: center;
             margin-top: auto;
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
         }
 
-        /* ===== SLIDE 2-5 - CONTENT ===== */
+        /* ===== SLIDE 2-5 - CONTENT (TANPA HEADER) ===== */
         .slide-content {
             padding: 0;
-        }
-
-        .content-header {
-            background: linear-gradient(135deg, var(--pink-500) 0%, var(--purple-500) 100%);
-            padding: 28px 28px 24px;
-            position: relative;
-            overflow: hidden;
-        }
-        .content-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .content-header .slide-num {
-            font-size: 48px;
-            font-weight: 900;
-            color: rgba(255,255,255,0.15);
-            line-height: 1;
-            position: absolute;
-            top: 12px;
-            right: 24px;
-        }
-        .content-header .slide-label {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 6px;
-        }
-        .content-header .slide-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1.3;
+            background: var(--white);
         }
 
         .content-body {
-            padding: 28px;
+            padding: 24px 28px 0;
             flex: 1;
             display: flex;
             flex-direction: column;
+        }
+
+        .slide-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--pink-500);
+            margin-bottom: 6px;
+        }
+        .slide-tag .tag-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
+        }
+
+        .slide-title-inline {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1.3;
+            margin-bottom: 16px;
         }
 
         .content-text {
@@ -474,8 +404,7 @@
         }
 
         .content-photo {
-            width: 100%;
-            height: 160px;
+            width: 100%; height: 160px;
             border-radius: 16px;
             overflow: hidden;
             margin-top: 16px;
@@ -483,30 +412,23 @@
             position: relative;
         }
         .content-photo img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
-        .content-photo:hover img {
-            transform: scale(1.05);
-        }
+        .content-photo:hover img { transform: scale(1.05); }
         .content-photo .photo-caption {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-            color: white;
-            font-size: 11px;
-            padding: 20px 14px 10px;
-            font-weight: 500;
+            color: white; font-size: 11px;
+            padding: 20px 14px 10px; font-weight: 500;
         }
 
         .quote-box {
             background: linear-gradient(135deg, var(--pink-100), var(--purple-100));
             border-radius: 16px;
-            padding: 20px;
+            padding: 18px;
             margin-top: 16px;
             position: relative;
             border-left: 4px solid var(--pink-400);
@@ -514,16 +436,15 @@
         .quote-box::before {
             content: '"';
             font-family: 'Playfair Display', serif;
-            font-size: 60px;
+            font-size: 52px;
             color: var(--pink-300);
             position: absolute;
-            top: -5px;
-            left: 12px;
+            top: -5px; left: 10px;
             line-height: 1;
         }
         .quote-box p {
             font-style: italic;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--dark);
             line-height: 1.7;
             padding-left: 8px;
@@ -532,7 +453,7 @@
         /* ===== SLIDE 6 - CLOSING ===== */
         .slide-closing {
             background: linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
-            padding: 40px 28px 28px;
+            padding: 40px 28px 24px;
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -542,26 +463,17 @@
         .slide-closing::before {
             content: '';
             position: absolute;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 300px;
+            top: -100px; left: 50%; transform: translateX(-50%);
+            width: 300px; height: 300px;
             background: radial-gradient(circle, rgba(255,71,126,0.15) 0%, transparent 70%);
             border-radius: 50%;
         }
 
-        .closing-stars {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
+        .closing-stars { position: absolute; inset: 0; pointer-events: none; }
         .cstar {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: white;
-            border-radius: 50%;
+            width: 3px; height: 3px;
+            background: white; border-radius: 50%;
             animation: twinkle 3s ease-in-out infinite;
         }
         @keyframes twinkle {
@@ -570,99 +482,71 @@
         }
 
         .closing-icon {
-            font-size: 56px;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 2;
+            font-size: 56px; margin-bottom: 16px;
+            position: relative; z-index: 2;
             animation: crownFloat 3s ease-in-out infinite;
         }
         .closing-hbd {
             font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 900;
-            color: var(--white);
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 2;
+            font-size: 32px; font-weight: 900;
+            color: var(--white); margin-bottom: 8px;
+            position: relative; z-index: 2;
         }
         .closing-name {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            color: var(--pink-300);
+            font-size: 20px; color: var(--pink-300);
             margin-bottom: 24px;
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
         }
         .closing-message {
             font-size: 14px;
             color: rgba(255,255,255,0.7);
-            line-height: 1.8;
-            max-width: 300px;
+            line-height: 1.8; max-width: 300px;
             margin: 0 auto 28px;
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
         }
         .closing-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            display: inline-flex; align-items: center; gap: 8px;
             background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
-            color: white;
-            font-size: 13px;
-            font-weight: 700;
-            padding: 12px 28px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
+            color: white; font-size: 13px; font-weight: 700;
+            padding: 12px 28px; border-radius: 50px;
+            border: none; cursor: pointer;
+            position: relative; z-index: 2;
             transition: all 0.3s ease;
             box-shadow: 0 8px 30px rgba(255,71,126,0.3);
             font-family: 'Inter', sans-serif;
         }
-        .closing-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(255,71,126,0.4);
-        }
-        .closing-cta:active {
-            transform: translateY(0) scale(0.97);
-        }
+        .closing-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,71,126,0.4); }
+        .closing-cta:active { transform: translateY(0) scale(0.97); }
 
         /* ===== TOAST ===== */
         .toast {
             position: fixed;
-            bottom: 30px;
-            left: 50%;
+            bottom: 30px; left: 50%;
             transform: translateX(-50%) translateY(100px);
             background: rgba(26,26,46,0.92);
             backdrop-filter: blur(12px);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 500;
+            color: white; padding: 12px 24px;
+            border-radius: 50px; font-size: 13px; font-weight: 500;
             z-index: 200;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
             font-family: 'Inter', sans-serif;
         }
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
+        .toast.show { transform: translateX(-50%) translateY(0); }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 440px) {
             .card-wrapper { padding: 8px; }
-            .slides-container { min-height: 660px; }
+            .slides-container { min-height: 540px; }
             .cover-name { font-size: 34px; }
-            .content-header { padding: 22px 22px 18px; }
-            .content-body { padding: 22px; }
+            .content-body { padding: 20px 22px 0; }
             .content-text { font-size: 14px; }
             .content-photo { height: 140px; }
-            .slide-nav { padding: 0 22px 22px; }
+            .slide-nav { padding: 0 22px 20px; }
             .cover-nav { padding: 20px 22px 22px; }
-            .btn-nav { padding: 10px 22px; font-size: 13px; }
-            .btn-next-cover { padding: 12px 28px; font-size: 14px; }
+            .btn-nav { padding: 10px 20px; font-size: 12px; }
+            .btn-next-cover { padding: 12px 28px; font-size: 13px; }
+            .slide-title-inline { font-size: 20px; }
         }
     </style>
 </head>
@@ -706,7 +590,6 @@
                     </div>
                     <div class="cover-age-badge">🥂 23 th</div>
                     <div class="cover-divider"></div>
-                    <!-- Tombol Next langsung di bawah "23 th" -->
                     <div class="cover-nav">
                         <button class="btn-nav btn-next btn-next-cover" id="coverNextBtn">
                             Buka Pesan 💌
@@ -716,12 +599,9 @@
 
                 <!-- SLIDE 2 -->
                 <div class="slide slide-content" data-slide="1">
-                    <div class="content-header">
-                        <span class="slide-num">01</span>
-                        <div class="slide-label">Pesan</div>
-                        <div class="slide-title">Selamat 23 Tahun! 🎉</div>
-                    </div>
                     <div class="content-body">
+                        <div class="slide-tag"><span class="tag-dot"></span> Pesan 01</div>
+                        <div class="slide-title-inline">Selamat 23 Tahun! 🎉</div>
                         <p class="content-text">
                             Angga, selamat <span class="highlight">23 tahun</span> yaa 🎉
                             <br><br>
@@ -740,12 +620,9 @@
 
                 <!-- SLIDE 3 -->
                 <div class="slide slide-content" data-slide="2">
-                    <div class="content-header" style="background: linear-gradient(135deg, var(--purple-500) 0%, var(--pink-500) 100%);">
-                        <span class="slide-num">02</span>
-                        <div class="slide-label">Pesan</div>
-                        <div class="slide-title">Tetap Jadi Angga 🌿</div>
-                    </div>
                     <div class="content-body">
+                        <div class="slide-tag"><span class="tag-dot"></span> Pesan 02</div>
+                        <div class="slide-title-inline">Tetap Jadi Angga 🌿</div>
                         <p class="content-text">
                             Di umur segini, kamu tetap jadi Angga yang aku kenal <span class="highlight">dewasa, tenang</span>, tapi kadang juga cuek dikit (tapi gapapa, masih aman kok 😏).
                             <br><br>
@@ -764,12 +641,9 @@
 
                 <!-- SLIDE 4 -->
                 <div class="slide slide-content" data-slide="3">
-                    <div class="content-header" style="background: linear-gradient(135deg, #F59E0B 0%, var(--pink-500) 100%);">
-                        <span class="slide-num">03</span>
-                        <div class="slide-label">Pesan</div>
-                        <div class="slide-title">Orang Langka 💎</div>
-                    </div>
                     <div class="content-body">
+                        <div class="slide-tag"><span class="tag-dot"></span> Pesan 03</div>
+                        <div class="slide-title-inline">Orang Langka 💎</div>
                         <p class="content-text">
                             Terima kasih ya sudah jadi orang yang <span class="highlight">konsisten</span>, walaupun kita cuma ketemu lewat layar. Nggak semua orang bisa kayak gitu, lho.
                         </p>
@@ -789,12 +663,9 @@
 
                 <!-- SLIDE 5 -->
                 <div class="slide slide-content" data-slide="4">
-                    <div class="content-header" style="background: linear-gradient(135deg, #0f3460 0%, var(--purple-500) 100%);">
-                        <span class="slide-num">04</span>
-                        <div class="slide-label">Doa & Harapan</div>
-                        <div class="slide-title">Semoga... 🌟</div>
-                    </div>
                     <div class="content-body">
+                        <div class="slide-tag"><span class="tag-dot"></span> Doa & Harapan</div>
+                        <div class="slide-title-inline">Semoga... 🌟</div>
                         <p class="content-text">
                             Semoga di umur 23 ini:
                             <br><br>
@@ -836,19 +707,16 @@
 
             </div>
 
-            <!-- Dots di paling bawah -->
             <div class="dots-bar" id="dots"></div>
         </div>
     </div>
 
     <script>
-        // ==================== SLIDE SYSTEM ====================
         var currentSlide = 0;
         var totalSlides = 6;
         var slides = document.querySelectorAll('.slide');
         var dotsContainer = document.getElementById('dots');
 
-        // Buat dot indicator
         for (var i = 0; i < totalSlides; i++) {
             var dot = document.createElement('button');
             dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -861,22 +729,17 @@
         }
         var dots = document.querySelectorAll('.dot');
 
-        // Tombol Next di cover
         document.getElementById('coverNextBtn').addEventListener('click', function() {
             goToSlide(1);
         });
 
-        // Semua tombol prev/next di slide content
         document.querySelectorAll('.btn-prev, .btn-next').forEach(function(btn) {
             btn.addEventListener('click', function() {
                 var target = parseInt(this.dataset.goto);
-                if (!isNaN(target)) {
-                    goToSlide(target);
-                }
+                if (!isNaN(target)) goToSlide(target);
             });
         });
 
-        // Tombol Rayakan di slide closing
         document.getElementById('celebrateBtn').addEventListener('click', function() {
             triggerConfetti();
             showToast();
@@ -988,7 +851,6 @@
             setTimeout(function() { toast.classList.remove('show'); }, 3000);
         }
 
-        // Confetti saat pertama kali buka
         window.addEventListener('load', function() {
             setTimeout(triggerConfetti, 800);
         });
