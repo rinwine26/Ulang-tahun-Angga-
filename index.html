@@ -49,7 +49,6 @@
             position: relative;
         }
 
-        /* Floating particles background */
         .particles {
             position: fixed;
             inset: 0;
@@ -71,7 +70,6 @@
             100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
         }
 
-        /* Confetti */
         .confetti-container {
             position: fixed;
             inset: 0;
@@ -91,7 +89,6 @@
             100% { transform: translateY(100vh) rotate(720deg) scale(0.3); opacity: 0; }
         }
 
-        /* Main card container */
         .card-wrapper {
             position: relative;
             z-index: 10;
@@ -111,7 +108,6 @@
             position: relative;
         }
 
-        /* Slide system */
         .slides-container {
             position: relative;
             overflow: hidden;
@@ -134,12 +130,8 @@
             pointer-events: auto;
             position: relative;
         }
-        .slide.exit-left {
-            opacity: 0;
-            transform: translateX(-60px) scale(0.97);
-        }
 
-        /* ==================== SLIDE 1 - COVER ==================== */
+        /* ===== SLIDE 1 - COVER ===== */
         .slide-cover {
             background: linear-gradient(160deg, var(--pink-100) 0%, var(--rose-100) 30%, var(--purple-100) 70%, var(--pink-100) 100%);
             padding: 32px 28px;
@@ -335,7 +327,7 @@
             50% { opacity: 1; }
         }
 
-        /* ==================== SLIDE 2-5 - CONTENT ==================== */
+        /* ===== SLIDE 2-5 - CONTENT ===== */
         .slide-content {
             padding: 0;
         }
@@ -398,9 +390,6 @@
             color: var(--pink-500);
             font-weight: 600;
         }
-        .content-text .emoji-inline {
-            display: inline;
-        }
 
         .content-photo {
             width: 100%;
@@ -458,7 +447,7 @@
             padding-left: 8px;
         }
 
-        /* ==================== SLIDE 6 - CLOSING ==================== */
+        /* ===== SLIDE 6 - CLOSING ===== */
         .slide-closing {
             background: linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
             padding: 40px 28px;
@@ -552,8 +541,11 @@
             transform: translateY(-2px);
             box-shadow: 0 12px 40px rgba(255,71,126,0.4);
         }
+        .closing-cta:active {
+            transform: translateY(0) scale(0.97);
+        }
 
-        /* ==================== NAVIGATION ==================== */
+        /* ===== NAVIGATION ===== */
         .nav-bar {
             display: flex;
             align-items: center;
@@ -561,6 +553,7 @@
             padding: 16px 24px;
             background: var(--white);
             border-top: 1px solid rgba(0,0,0,0.05);
+            gap: 12px;
         }
 
         .nav-btn {
@@ -573,41 +566,46 @@
             font-weight: 600;
             cursor: pointer;
             border: none;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
         }
-        .nav-btn:active { transform: scale(0.96); }
+        .nav-btn:active { transform: scale(0.95); }
 
         .nav-btn.prev {
             background: #F3F4F6;
             color: var(--gray-600);
         }
-        .nav-btn.prev:hover { background: #E5E7EB; }
+        .nav-btn.prev:hover:not(:disabled) { background: #E5E7EB; }
         .nav-btn.prev:disabled {
-            opacity: 0.4;
+            opacity: 0.35;
             cursor: not-allowed;
+            transform: none;
         }
-        .nav-btn.prev:disabled:hover { background: #F3F4F6; }
 
         .nav-btn.next {
             background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
             color: white;
             box-shadow: 0 4px 15px rgba(255,71,126,0.3);
         }
-        .nav-btn.next:hover {
+        .nav-btn.next:hover:not(:disabled) {
             box-shadow: 0 6px 25px rgba(255,71,126,0.4);
             transform: translateY(-1px);
         }
+        .nav-btn.next:active:not(:disabled) {
+            transform: translateY(0) scale(0.97);
+        }
         .nav-btn.next:disabled {
-            opacity: 0.4;
+            opacity: 0.35;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
 
-        /* Dots indicator */
         .dots {
             display: flex;
-            gap: 6px;
+            gap: 5px;
+            flex-shrink: 0;
         }
         .dot {
             width: 8px;
@@ -616,44 +614,25 @@
             background: #E5E7EB;
             transition: all 0.3s ease;
             cursor: pointer;
+            border: none;
+            padding: 0;
+        }
+        .dot:hover:not(.active) {
+            background: #D1D5DB;
         }
         .dot.active {
-            width: 24px;
+            width: 22px;
             border-radius: 10px;
             background: linear-gradient(90deg, var(--pink-500), var(--purple-500));
         }
 
-        /* Music toggle */
-        .music-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 50;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .music-btn:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* Toast notification */
+        /* ===== TOAST ===== */
         .toast {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: rgba(26,26,46,0.9);
+            background: rgba(26,26,46,0.92);
             backdrop-filter: blur(12px);
             color: white;
             padding: 12px 24px;
@@ -663,12 +642,13 @@
             z-index: 200;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
+            font-family: 'Inter', sans-serif;
         }
         .toast.show {
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Responsive */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 440px) {
             .card-wrapper { padding: 8px; }
             .slides-container { min-height: 620px; }
@@ -676,22 +656,16 @@
             .content-header { padding: 22px 22px 18px; }
             .content-body { padding: 22px; }
             .content-text { font-size: 14px; }
-            .nav-btn { padding: 8px 16px; font-size: 12px; }
+            .nav-btn { padding: 8px 14px; font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating particles -->
     <div class="particles" id="particles"></div>
-
-    <!-- Confetti container -->
     <div class="confetti-container" id="confetti"></div>
-
-    <!-- Toast -->
     <div class="toast" id="toast">🎉 Selamat ulang tahun, Angga!</div>
 
-    <!-- Main Card -->
     <div class="card-wrapper">
         <div class="card">
             <div class="slides-container" id="slidesContainer">
@@ -708,16 +682,12 @@
                         <span class="sparkle">⭐</span>
                         <span class="sparkle">✦</span>
                     </div>
-
                     <div class="cover-crown">👑</div>
-
                     <div class="cover-photo-wrapper">
-                        <img src="WhatsApp Image 2026-04-26 at 23.14.55.jpeg" alt="Angga">
+                        <img src="WhatsApp Image 2026-04-26 at 23.13.53.jpeg" alt="Angga">
                     </div>
-
                     <div class="cover-happy">Happy Birthday</div>
                     <div class="cover-name">Angga</div>
-
                     <div class="cover-date-badge">
                         <div class="cover-calendar">
                             <span class="cal-month">April</span>
@@ -725,19 +695,19 @@
                         </div>
                         <div class="cover-date-text">
                             <div class="date-year">2026</div>
-                            <div class="date-label">Birthday Celebration</div>
+                            <div class="date-label">Birthday</div>
                         </div>
                     </div>
-
-                    <div class="cover-age-badge">🥂 23 Tahun </div>
+                    <div class="cover-age-badge">🥂 23 th</div>
                     <div class="cover-divider"></div>
-                    <div class="cover-hint">Geser untuk membaca pesan →</div>
+                    <div class="cover-hint">Klik tombol Lanjut untuk membaca pesan</div>
                 </div>
 
-                <!-- SLIDE 2: PARAGRAPH 1 + PHOTO -->
+                <!-- SLIDE 2 -->
                 <div class="slide slide-content" data-slide="1">
                     <div class="content-header">
                         <span class="slide-num">01</span>
+                        <div class="slide-label">Pesan </div>
                         <div class="slide-title">Selamat 23 Tahun! 🎉</div>
                     </div>
                     <div class="content-body">
@@ -747,37 +717,37 @@
                             Walaupun kita <span class="highlight">LDR</span> dan belum pernah ketemu, tapi anehnya kamu udah kayak orang yang "sering lewat" di pikiranku. Mungkin karena kamu terlalu rajin muncul di chat 😄
                         </p>
                         <div class="content-photo">
-                            <img src="WhatsApp Image 2026-04-26 at 23.14.56.jpeg" alt="LDR Moment">
+                            <img src="WhatsApp Image 2026-04-26 at 23.14.55.jpeg" alt="LDR Moment">
                             <div class="photo-caption">📱 Meski jauh, tetap terhubung...</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SLIDE 3: PARAGRAPH 2 + PHOTO -->
+                <!-- SLIDE 3 -->
                 <div class="slide slide-content" data-slide="2">
                     <div class="content-header" style="background: linear-gradient(135deg, var(--purple-500) 0%, var(--pink-500) 100%);">
                         <span class="slide-num">02</span>
-                        <div class="slide-label">Pesan Kedua</div>
+                        <div class="slide-label">Pesan </div>
                         <div class="slide-title">Tetap Jadi Angga 🌿</div>
                     </div>
                     <div class="content-body">
                         <p class="content-text">
-                            Di umur segini, kamu tetap jadi Angga yang aku kenal—<span class="highlight">dewasa, tenang</span>, tapi kadang juga suka ngeselin dikit (tapi gapapa, masih aman kok 😏).
+                            Di umur segini, kamu tetap jadi Angga yang aku kenal <span class="highlight">dewasa, tenang</span>, tapi kadang juga cuek dikit (tapi gapapa, masih aman kok 😏).
                             <br><br>
                             Jujur, ngobrol sama kamu tuh rasanya <span class="highlight">simpel, nggak ribet</span>, dan itu yang bikin aku betah.
                         </p>
                         <div class="content-photo">
-                            <img src="WhatsApp Image 2026-04-26 at 23.14.55 (1).jpeg" alt="Calm Vibe">
-                            <div class="photo-caption">☕ Simpel dan nggak ribet—itu yang terbaik</div>
+                            <img src="WhatsApp Image 2026-04-26 at 23.13.54.jpeg" alt="Calm Vibe">
+                            <div class="photo-caption">☕ Simpel dan nggak ribet itu yang terbaik</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SLIDE 4: PARAGRAPH 3 -->
+                <!-- SLIDE 4 -->
                 <div class="slide slide-content" data-slide="3">
                     <div class="content-header" style="background: linear-gradient(135deg, #F59E0B 0%, var(--pink-500) 100%);">
                         <span class="slide-num">03</span>
-                        <div class="slide-label">Pesan Ketiga</div>
+                        <div class="slide-label">Pesan </div>
                         <div class="slide-title">Orang Langka 💎</div>
                     </div>
                     <div class="content-body">
@@ -788,13 +758,13 @@
                             <p>Kamu termasuk langka… kayak <strong>promo gratis ongkir tanpa minimum belanja</strong> 🤭</p>
                         </div>
                         <div class="content-photo" style="margin-top: 20px;">
-                            <img src="WhatsApp Image 2026-04-26 at 23.14.54.jpeg" alt="Rare Find">
+                            <img src="WhatsApp Image 2026-04-26 at 23.13.54.jpeg" alt="Rare Find">
                             <div class="photo-caption">💎 Langka, seperti promo tanpa minimum belanja</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- SLIDE 5: PARAGRAPH 4 -->
+                <!-- SLIDE 5 -->
                 <div class="slide slide-content" data-slide="4">
                     <div class="content-header" style="background: linear-gradient(135deg, #0f3460 0%, var(--purple-500) 100%);">
                         <span class="slide-num">04</span>
@@ -807,11 +777,11 @@
                             <br><br>
                             🍀 Hidup kamu makin <span class="highlight">lancar</span>
                             <br>
-                            💰 Rezeki nggak seret
+                            💰 Rezeki makin lancar
                             <br>
                             🛡️ Masalah-masalah mikir dua kali sebelum datang ke kamu
                             <br><br>
-                            Dan semoga juga… suatu hari kita nggak cuma <span class="highlight">"ketemu di chat"</span>, tapi beneran ketemu—
+                            Dan semoga juga… suatu hari kita nggak cuma <span class="highlight">"ketemu di chat"</span>, tapi beneran ketemu
                         </p>
                         <div class="quote-box" style="border-left-color: var(--purple-400); background: linear-gradient(135deg, var(--purple-100), var(--pink-100));">
                             <p>Biar aku bisa ngecek, kamu <strong>setinggi yang kamu bilang atau nggak</strong> 😆</p>
@@ -838,11 +808,11 @@
 
             <!-- Navigation -->
             <div class="nav-bar">
-                <button class="nav-btn prev" id="prevBtn" disabled onclick="changeSlide(-1)">
+                <button class="nav-btn prev" id="prevBtn" disabled>
                     ← Kembali
                 </button>
                 <div class="dots" id="dots"></div>
-                <button class="nav-btn next" id="nextBtn" onclick="changeSlide(1)">
+                <button class="nav-btn next" id="nextBtn">
                     Lanjut →
                 </button>
             </div>
@@ -858,14 +828,19 @@
         const nextBtn = document.getElementById('nextBtn');
         const dotsContainer = document.getElementById('dots');
 
-        // Create dots
+        // Buat dot indicator
         for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('div');
+            const dot = document.createElement('button');
             dot.className = 'dot' + (i === 0 ? ' active' : '');
-            dot.onclick = () => goToSlide(i);
+            dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+            dot.addEventListener('click', function() { goToSlide(i); });
             dotsContainer.appendChild(dot);
         }
         const dots = document.querySelectorAll('.dot');
+
+        // Tombol prev/next pakai event listener (bukan inline onclick)
+        prevBtn.addEventListener('click', function() { changeSlide(-1); });
+        nextBtn.addEventListener('click', function() { changeSlide(1); });
 
         function goToSlide(index) {
             if (index === currentSlide || index < 0 || index >= totalSlides) return;
@@ -874,15 +849,14 @@
             const oldSlide = slides[currentSlide];
             const newSlide = slides[index];
 
-            // Exit old slide
+            // Animasi keluar slide lama
             oldSlide.classList.remove('active');
-            oldSlide.classList.add(direction > 0 ? 'exit-left' : '');
             oldSlide.style.transform = direction > 0 
                 ? 'translateX(-60px) scale(0.97)' 
                 : 'translateX(60px) scale(0.97)';
             oldSlide.style.opacity = '0';
 
-            // Prepare new slide entry
+            // Siapkan posisi awal slide baru
             newSlide.style.transition = 'none';
             newSlide.style.transform = direction > 0 
                 ? 'translateX(60px) scale(0.97)' 
@@ -892,7 +866,7 @@
             // Force reflow
             void newSlide.offsetWidth;
 
-            // Animate in
+            // Animasi masuk slide baru
             newSlide.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
             newSlide.classList.add('active');
             newSlide.style.transform = 'translateX(0) scale(1)';
@@ -901,9 +875,9 @@
             currentSlide = index;
             updateNav();
 
-            // Trigger confetti on last slide
+            // Confetti otomatis di slide terakhir
             if (index === totalSlides - 1) {
-                setTimeout(() => triggerConfetti(), 400);
+                setTimeout(function() { triggerConfetti(); }, 400);
             }
         }
 
@@ -919,78 +893,62 @@
             } else {
                 nextBtn.innerHTML = 'Lanjut →';
             }
-            dots.forEach((dot, i) => {
+            dots.forEach(function(dot, i) {
                 dot.classList.toggle('active', i === currentSlide);
             });
         }
 
-        // Touch/swipe support
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const container = document.getElementById('slidesContainer');
-
-        container.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        container.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
-            if (Math.abs(diff) > 50) {
-                changeSlide(diff > 0 ? 1 : -1);
-            }
-        }, { passive: true });
-
         // ==================== PARTICLES ====================
-        const particlesEl = document.getElementById('particles');
-        const colors = ['#FF477E', '#A855F7', '#FFD700', '#FF8FA3', '#C084FC', '#FDA4AF'];
+        var particlesEl = document.getElementById('particles');
+        var colors = ['#FF477E', '#A855F7', '#FFD700', '#FF8FA3', '#C084FC', '#FDA4AF'];
 
         function createParticle() {
-            const p = document.createElement('div');
+            var p = document.createElement('div');
             p.className = 'particle';
             p.style.left = Math.random() * 100 + '%';
             p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            p.style.width = (3 + Math.random() * 5) + 'px';
-            p.style.height = p.style.width;
+            var size = (3 + Math.random() * 5) + 'px';
+            p.style.width = size;
+            p.style.height = size;
             p.style.animationDuration = (8 + Math.random() * 12) + 's';
             p.style.animationDelay = Math.random() * 5 + 's';
             particlesEl.appendChild(p);
-
-            setTimeout(() => p.remove(), 25000);
+            setTimeout(function() { p.remove(); }, 25000);
         }
 
-        // Initial burst
-        for (let i = 0; i < 15; i++) {
+        for (var i = 0; i < 15; i++) {
             setTimeout(createParticle, i * 300);
         }
         setInterval(createParticle, 2000);
 
         // ==================== CONFETTI ====================
-        const confettiEl = document.getElementById('confetti');
-        const confettiColors = ['#FF477E', '#A855F7', '#FFD700', '#FF8FA3', '#C084FC', '#34D399', '#FBBF24', '#F87171'];
+        var confettiEl = document.getElementById('confetti');
+        var confettiColors = ['#FF477E', '#A855F7', '#FFD700', '#FF8FA3', '#C084FC', '#34D399', '#FBBF24', '#F87171'];
 
         function triggerConfetti() {
-            for (let i = 0; i < 60; i++) {
-                const piece = document.createElement('div');
-                piece.className = 'confetti-piece';
-                piece.style.left = Math.random() * 100 + '%';
-                piece.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-                piece.style.animationDuration = (2 + Math.random() * 3) + 's';
-                piece.style.animationDelay = Math.random() * 0.8 + 's';
-                piece.style.width = (6 + Math.random() * 8) + 'px';
-                piece.style.height = (6 + Math.random() * 8) + 'px';
-                piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-                piece.style.transform = `rotate(${Math.random() * 360}deg)`;
-                confettiEl.appendChild(piece);
-
-                setTimeout(() => piece.remove(), 5000);
+            for (var i = 0; i < 60; i++) {
+                (function(delay) {
+                    setTimeout(function() {
+                        var piece = document.createElement('div');
+                        piece.className = 'confetti-piece';
+                        piece.style.left = Math.random() * 100 + '%';
+                        piece.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                        piece.style.animationDuration = (2 + Math.random() * 3) + 's';
+                        var w = (6 + Math.random() * 8) + 'px';
+                        piece.style.width = w;
+                        piece.style.height = w;
+                        piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                        confettiEl.appendChild(piece);
+                        setTimeout(function() { piece.remove(); }, 5000);
+                    }, delay);
+                })(Math.random() * 800);
             }
         }
 
         // ==================== CLOSING STARS ====================
-        const closingStars = document.getElementById('closingStars');
-        for (let i = 0; i < 30; i++) {
-            const star = document.createElement('div');
+        var closingStars = document.getElementById('closingStars');
+        for (var s = 0; s < 30; s++) {
+            var star = document.createElement('div');
             star.className = 'cstar';
             star.style.left = Math.random() * 100 + '%';
             star.style.top = Math.random() * 100 + '%';
@@ -1001,13 +959,13 @@
 
         // ==================== TOAST ====================
         function showToast() {
-            const toast = document.getElementById('toast');
+            var toast = document.getElementById('toast');
             toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
+            setTimeout(function() { toast.classList.remove('show'); }, 3000);
         }
 
-        // Initial confetti on load
-        window.addEventListener('load', () => {
+        // Confetti saat pertama kali buka
+        window.addEventListener('load', function() {
             setTimeout(triggerConfetti, 800);
         });
     </script>
