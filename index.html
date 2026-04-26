@@ -16,20 +16,13 @@
             --pink-400: #FF758F;
             --pink-500: #FF477E;
             --pink-600: #E0245E;
-            --rose-50: #FFF1F2;
             --rose-100: #FFE4E6;
-            --rose-200: #FECDD3;
             --rose-300: #FDA4AF;
-            --rose-400: #FB7185;
             --rose-500: #F43F5E;
             --purple-100: #F3E8FF;
-            --purple-200: #E9D5FF;
             --purple-300: #D8B4FE;
             --purple-400: #C084FC;
             --purple-500: #A855F7;
-            --peach-100: #FFF5EB;
-            --peach-200: #FFE8D1;
-            --peach-300: #FFD1A9;
             --gold: #FFD700;
             --gold-dark: #DAA520;
             --white: #FFFFFF;
@@ -45,7 +38,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             position: relative;
         }
 
@@ -95,6 +89,7 @@
             width: 100%;
             max-width: 420px;
             padding: 16px;
+            margin: 20px auto;
         }
 
         .card {
@@ -111,7 +106,7 @@
         .slides-container {
             position: relative;
             overflow: hidden;
-            min-height: 680px;
+            min-height: 720px;
         }
 
         .slide {
@@ -131,12 +126,109 @@
             position: relative;
         }
 
+        /* ===== TOMBOL NAVIGASI INLINE ===== */
+        .slide-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 0 28px 28px;
+            margin-top: auto;
+        }
+
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            white-space: nowrap;
+        }
+        .btn-nav:active:not(:disabled) { transform: scale(0.95); }
+
+        .btn-prev {
+            background: #F3F4F6;
+            color: var(--gray-600);
+        }
+        .btn-prev:hover:not(:disabled) { background: #E5E7EB; }
+        .btn-prev:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
+            color: white;
+            box-shadow: 0 6px 20px rgba(255,71,126,0.35);
+        }
+        .btn-next:hover {
+            box-shadow: 0 8px 30px rgba(255,71,126,0.45);
+            transform: translateY(-2px);
+        }
+        .btn-next:active {
+            transform: translateY(0) scale(0.97);
+        }
+
+        /* Tombol Next khusus di cover — lebih besar */
+        .btn-next-cover {
+            padding: 14px 36px;
+            font-size: 15px;
+            box-shadow: 0 8px 28px rgba(255,71,126,0.4);
+            position: relative;
+            z-index: 2;
+        }
+        .btn-next-cover::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
+            z-index: -1;
+            opacity: 0.3;
+            animation: btnGlow 2s ease-in-out infinite;
+        }
+        @keyframes btnGlow {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.04); }
+        }
+
+        /* ===== DOTS ===== */
+        .dots-bar {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 14px 0 18px;
+            background: var(--white);
+        }
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #E5E7EB;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+        }
+        .dot:hover:not(.active) { background: #D1D5DB; }
+        .dot.active {
+            width: 22px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--pink-500), var(--purple-500));
+        }
+
         /* ===== SLIDE 1 - COVER ===== */
         .slide-cover {
             background: linear-gradient(160deg, var(--pink-100) 0%, var(--rose-100) 30%, var(--purple-100) 70%, var(--pink-100) 100%);
-            padding: 32px 28px;
+            padding: 32px 28px 0;
             align-items: center;
-            justify-content: center;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -173,8 +265,8 @@
         }
         .sparkle:nth-child(1) { top: 10%; left: 8%; animation-delay: 0s; }
         .sparkle:nth-child(2) { top: 15%; right: 12%; animation-delay: 0.4s; }
-        .sparkle:nth-child(3) { bottom: 20%; left: 15%; animation-delay: 0.8s; }
-        .sparkle:nth-child(4) { bottom: 30%; right: 8%; animation-delay: 1.2s; }
+        .sparkle:nth-child(3) { bottom: 25%; left: 15%; animation-delay: 0.8s; }
+        .sparkle:nth-child(4) { bottom: 35%; right: 8%; animation-delay: 1.2s; }
         .sparkle:nth-child(5) { top: 40%; left: 5%; animation-delay: 0.6s; }
         .sparkle:nth-child(6) { top: 60%; right: 5%; animation-delay: 1s; }
         @keyframes sparkle {
@@ -271,9 +363,7 @@
             font-size: 18px;
             font-weight: 800;
         }
-        .cover-date-text {
-            text-align: left;
-        }
+        .cover-date-text { text-align: left; }
         .cover-date-text .date-year {
             font-size: 11px;
             color: var(--gray-400);
@@ -305,26 +395,18 @@
             height: 3px;
             background: linear-gradient(90deg, var(--pink-300), var(--purple-300));
             border-radius: 10px;
-            margin: 16px auto 0;
+            margin: 20px auto 0;
             position: relative;
             z-index: 2;
         }
 
-        .cover-hint {
-            margin-top: 24px;
-            font-size: 11px;
-            color: var(--gray-400);
+        .cover-nav {
+            padding: 24px 28px 28px;
             display: flex;
-            align-items: center;
-            gap: 6px;
             justify-content: center;
+            margin-top: auto;
             position: relative;
             z-index: 2;
-            animation: hintPulse 2s ease-in-out infinite;
-        }
-        @keyframes hintPulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
         }
 
         /* ===== SLIDE 2-5 - CONTENT ===== */
@@ -393,10 +475,10 @@
 
         .content-photo {
             width: 100%;
-            height: 180px;
+            height: 160px;
             border-radius: 16px;
             overflow: hidden;
-            margin-top: 20px;
+            margin-top: 16px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.08);
             position: relative;
         }
@@ -425,7 +507,7 @@
             background: linear-gradient(135deg, var(--pink-100), var(--purple-100));
             border-radius: 16px;
             padding: 20px;
-            margin-top: 20px;
+            margin-top: 16px;
             position: relative;
             border-left: 4px solid var(--pink-400);
         }
@@ -450,7 +532,7 @@
         /* ===== SLIDE 6 - CLOSING ===== */
         .slide-closing {
             background: linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
-            padding: 40px 28px;
+            padding: 40px 28px 28px;
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -546,80 +628,6 @@
             transform: translateY(0) scale(0.97);
         }
 
-        /* ===== NAVIGATION ===== */
-        .nav-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 24px;
-            background: var(--white);
-            border-top: 1px solid rgba(0,0,0,0.05);
-            gap: 12px;
-        }
-
-        .nav-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.25s ease;
-            font-family: 'Inter', sans-serif;
-            white-space: nowrap;
-        }
-        .nav-btn:active:not(:disabled) { transform: scale(0.95); }
-
-        .nav-btn.prev {
-            background: #F3F4F6;
-            color: var(--gray-600);
-        }
-        .nav-btn.prev:hover:not(:disabled) { background: #E5E7EB; }
-        .nav-btn.prev:disabled {
-            opacity: 0.35;
-            cursor: not-allowed;
-        }
-
-        .nav-btn.next {
-            background: linear-gradient(135deg, var(--pink-500), var(--purple-500));
-            color: white;
-            box-shadow: 0 4px 15px rgba(255,71,126,0.3);
-        }
-        .nav-btn.next:hover {
-            box-shadow: 0 6px 25px rgba(255,71,126,0.4);
-            transform: translateY(-1px);
-        }
-        .nav-btn.next:active {
-            transform: translateY(0) scale(0.97);
-        }
-
-        .dots {
-            display: flex;
-            gap: 5px;
-            flex-shrink: 0;
-        }
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #E5E7EB;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            padding: 0;
-        }
-        .dot:hover:not(.active) {
-            background: #D1D5DB;
-        }
-        .dot.active {
-            width: 22px;
-            border-radius: 10px;
-            background: linear-gradient(90deg, var(--pink-500), var(--purple-500));
-        }
-
         /* ===== TOAST ===== */
         .toast {
             position: fixed;
@@ -645,12 +653,16 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 440px) {
             .card-wrapper { padding: 8px; }
-            .slides-container { min-height: 620px; }
+            .slides-container { min-height: 660px; }
             .cover-name { font-size: 34px; }
             .content-header { padding: 22px 22px 18px; }
             .content-body { padding: 22px; }
             .content-text { font-size: 14px; }
-            .nav-btn { padding: 8px 14px; font-size: 12px; }
+            .content-photo { height: 140px; }
+            .slide-nav { padding: 0 22px 22px; }
+            .cover-nav { padding: 20px 22px 22px; }
+            .btn-nav { padding: 10px 22px; font-size: 13px; }
+            .btn-next-cover { padding: 12px 28px; font-size: 14px; }
         }
     </style>
 </head>
@@ -694,14 +706,19 @@
                     </div>
                     <div class="cover-age-badge">🥂 23 th</div>
                     <div class="cover-divider"></div>
-                    <div class="cover-hint">Klik tombol Next untuk membaca pesan</div>
+                    <!-- Tombol Next langsung di bawah "23 th" -->
+                    <div class="cover-nav">
+                        <button class="btn-nav btn-next btn-next-cover" id="coverNextBtn">
+                            Buka Pesan 💌
+                        </button>
+                    </div>
                 </div>
 
                 <!-- SLIDE 2 -->
                 <div class="slide slide-content" data-slide="1">
                     <div class="content-header">
                         <span class="slide-num">01</span>
-                        <div class="slide-label">Pesan </div>
+                        <div class="slide-label">Pesan</div>
                         <div class="slide-title">Selamat 23 Tahun! 🎉</div>
                     </div>
                     <div class="content-body">
@@ -715,13 +732,17 @@
                             <div class="photo-caption">📱 Meski jauh, tetap terhubung...</div>
                         </div>
                     </div>
+                    <div class="slide-nav">
+                        <button class="btn-nav btn-prev" disabled>← Prev</button>
+                        <button class="btn-nav btn-next" data-goto="2">Next →</button>
+                    </div>
                 </div>
 
                 <!-- SLIDE 3 -->
                 <div class="slide slide-content" data-slide="2">
                     <div class="content-header" style="background: linear-gradient(135deg, var(--purple-500) 0%, var(--pink-500) 100%);">
                         <span class="slide-num">02</span>
-                        <div class="slide-label">Pesan </div>
+                        <div class="slide-label">Pesan</div>
                         <div class="slide-title">Tetap Jadi Angga 🌿</div>
                     </div>
                     <div class="content-body">
@@ -735,13 +756,17 @@
                             <div class="photo-caption">☕ Simpel dan nggak ribet itu yang terbaik</div>
                         </div>
                     </div>
+                    <div class="slide-nav">
+                        <button class="btn-nav btn-prev" data-goto="1">← Prev</button>
+                        <button class="btn-nav btn-next" data-goto="3">Next →</button>
+                    </div>
                 </div>
 
                 <!-- SLIDE 4 -->
                 <div class="slide slide-content" data-slide="3">
                     <div class="content-header" style="background: linear-gradient(135deg, #F59E0B 0%, var(--pink-500) 100%);">
                         <span class="slide-num">03</span>
-                        <div class="slide-label">Pesan </div>
+                        <div class="slide-label">Pesan</div>
                         <div class="slide-title">Orang Langka 💎</div>
                     </div>
                     <div class="content-body">
@@ -751,10 +776,14 @@
                         <div class="quote-box">
                             <p>Kamu termasuk langka… kayak <strong>promo gratis ongkir tanpa minimum belanja</strong> 🤭</p>
                         </div>
-                        <div class="content-photo" style="margin-top: 20px;">
+                        <div class="content-photo">
                             <img src="WhatsApp Image 2026-04-26 at 23.13.54.jpeg" alt="Rare Find">
                             <div class="photo-caption">💎 Langka, seperti promo tanpa minimum belanja</div>
                         </div>
+                    </div>
+                    <div class="slide-nav">
+                        <button class="btn-nav btn-prev" data-goto="2">← Prev</button>
+                        <button class="btn-nav btn-next" data-goto="4">Next →</button>
                     </div>
                 </div>
 
@@ -781,6 +810,10 @@
                             <p>Biar aku bisa ngecek, kamu <strong>setinggi yang kamu bilang atau nggak</strong> 😆</p>
                         </div>
                     </div>
+                    <div class="slide-nav">
+                        <button class="btn-nav btn-prev" data-goto="3">← Prev</button>
+                        <button class="btn-nav btn-next" data-goto="5">Next →</button>
+                    </div>
                 </div>
 
                 <!-- SLIDE 6: CLOSING -->
@@ -796,20 +829,15 @@
                     <button class="closing-cta" id="celebrateBtn">
                         🎉 Rayakan Ulang Tahun
                     </button>
+                    <div class="slide-nav" style="padding-top: 16px;">
+                        <button class="btn-nav btn-prev" data-goto="4">← Prev</button>
+                    </div>
                 </div>
 
             </div>
 
-            <!-- Navigation -->
-            <div class="nav-bar">
-                <button class="nav-btn prev" id="prevBtn" disabled>
-                    ← Prev
-                </button>
-                <div class="dots" id="dots"></div>
-                <button class="nav-btn next" id="nextBtn">
-                    Next →
-                </button>
-            </div>
+            <!-- Dots di paling bawah -->
+            <div class="dots-bar" id="dots"></div>
         </div>
     </div>
 
@@ -818,8 +846,6 @@
         var currentSlide = 0;
         var totalSlides = 6;
         var slides = document.querySelectorAll('.slide');
-        var prevBtn = document.getElementById('prevBtn');
-        var nextBtn = document.getElementById('nextBtn');
         var dotsContainer = document.getElementById('dots');
 
         // Buat dot indicator
@@ -835,27 +861,23 @@
         }
         var dots = document.querySelectorAll('.dot');
 
-        // Tombol Prev
-        prevBtn.addEventListener('click', function() {
-            if (currentSlide > 0) {
-                goToSlide(currentSlide - 1);
-            }
+        // Tombol Next di cover
+        document.getElementById('coverNextBtn').addEventListener('click', function() {
+            goToSlide(1);
         });
 
-        // Tombol Next — di slide terakhir tetap bisa diklik untuk confetti
-        nextBtn.addEventListener('click', function() {
-            if (currentSlide < totalSlides - 1) {
-                goToSlide(currentSlide + 1);
-            } else {
-                // Sudah di slide terakhir → trigger confetti + toast
-                triggerConfetti();
-                showToast();
-            }
+        // Semua tombol prev/next di slide content
+        document.querySelectorAll('.btn-prev, .btn-next').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var target = parseInt(this.dataset.goto);
+                if (!isNaN(target)) {
+                    goToSlide(target);
+                }
+            });
         });
 
         // Tombol Rayakan di slide closing
-        var celebrateBtn = document.getElementById('celebrateBtn');
-        celebrateBtn.addEventListener('click', function() {
+        document.getElementById('celebrateBtn').addEventListener('click', function() {
             triggerConfetti();
             showToast();
         });
@@ -867,47 +889,34 @@
             var oldSlide = slides[currentSlide];
             var newSlide = slides[index];
 
-            // Animasi keluar slide lama
             oldSlide.classList.remove('active');
             oldSlide.style.transform = direction > 0 
                 ? 'translateX(-60px) scale(0.97)' 
                 : 'translateX(60px) scale(0.97)';
             oldSlide.style.opacity = '0';
 
-            // Siapkan posisi awal slide baru
             newSlide.style.transition = 'none';
             newSlide.style.transform = direction > 0 
                 ? 'translateX(60px) scale(0.97)' 
                 : 'translateX(-60px) scale(0.97)';
             newSlide.style.opacity = '0';
 
-            // Force reflow
             void newSlide.offsetWidth;
 
-            // Animasi masuk slide baru
             newSlide.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
             newSlide.classList.add('active');
             newSlide.style.transform = 'translateX(0) scale(1)';
             newSlide.style.opacity = '1';
 
             currentSlide = index;
-            updateNav();
+            updateDots();
 
-            // Confetti otomatis saat masuk slide terakhir
             if (index === totalSlides - 1) {
                 setTimeout(function() { triggerConfetti(); }, 400);
             }
         }
 
-        function updateNav() {
-            // Tombol Prev: disabled hanya di slide pertama
-            prevBtn.disabled = (currentSlide === 0);
-
-            // Tombol Next: SELALU aktif — tulisan tetap "Next →"
-            // Di slide terakhir, klik Next = trigger confetti (bukan pindah slide)
-            nextBtn.disabled = false;
-
-            // Update dots
+        function updateDots() {
             dots.forEach(function(dot, i) {
                 dot.classList.toggle('active', i === currentSlide);
             });
